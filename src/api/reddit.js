@@ -22,7 +22,11 @@ export const search = async (term) => {
             ups: child.data.ups,
             subreddit: child.data.subreddit,
             created: child.data.created_utc,
-            id: child.data.id
+            id: child.data.id,
+            showingComments: false,
+            loadingComments: false,
+            error: false,
+            comments: []
         };
     });
     return newPosts;

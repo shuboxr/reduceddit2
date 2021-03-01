@@ -1,8 +1,70 @@
 :root {
   --color-background: black;
   --color-text: green;
+  --color-button-title: radial-gradient(white 40%, rgb(201, 201, 201));
+
+  --height-app-header: 75px;
+
+  --padding-text: 7px;
+
+  --radius-text: 15px;
+
+  --size-text-subtitle: 12px;
 }
 
+main {
+  width: 100%;
+  height: calc(100% - var(--height-app-header));
+  min-height: 498px;
+  display: flex;
+  flex-shrink: 1;
+}
+
+.app {
+  width: 90vw;
+  max-width: 600px;
+  height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+.app-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: var(--height-app-header);
+  background-color: white;
+}
+
+.main-title {
+  width: min-content;
+  height: min-content;
+  margin-top: 5px;
+  padding: 0 var(--padding-text) 2px var(--padding-text);
+  color: rgb(70, 120, 151);
+  background-color: whitesmoke;
+  background-image: var(--color-button-title);
+  font-weight: 900;
+  border-radius: var(--radius-text);
+  box-shadow: 1px 1px 3px black, -1px -1px 3px black, 1px -1px 3px black, -1px 1px 3px black;
+}
+
+.main-title:hover {
+  cursor: pointer;
+}
+
+.subtitle {
+  color: black;
+  font-size: var(--size-text-subtitle);
+  margin-top: 3px;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 
 /*.App {

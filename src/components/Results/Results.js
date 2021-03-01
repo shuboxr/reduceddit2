@@ -1,4 +1,4 @@
-
+import './Results.css';
 import { useSelector } from 'react-redux';
 import { ShortPost } from './ShortPost';
 

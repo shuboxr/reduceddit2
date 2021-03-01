@@ -1,3 +1,4 @@
+import './Search.css';
 import { SearchBar } from './SearchBar';
 import { SearchFilter } from './SearchFilter';
 

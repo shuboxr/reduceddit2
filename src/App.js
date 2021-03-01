@@ -6,11 +6,11 @@ import './App.css';
 import { useSelector } from 'react-redux';
 
 function App() {
-
+  const samplePost = useSelector(state => {return state.reddit.posts[0]});
   const content = useSelector(state => {return state.reddit.postClicked}) ?
     (
       <main>
-        <FullPost />
+        <FullPost post={samplePost}/>
       </main>
     ) : (
       <main>
@@ -20,9 +20,10 @@ function App() {
     );
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Reduceddit</h1>
+    <div className="app">
+      <header className="app-header">
+        <h1 className="main-title">reduceddit</h1>
+        <p className="subtitle">because you deserve less&trade;</p>
       </header>
       {content}
     </div>
