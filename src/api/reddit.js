@@ -8,7 +8,7 @@ export const search = async (term) => {
         if (child.data.is_reddit_media_domain && child.data.secure_media === null && !child.data.crosspost_parent_list) {
             img = child.data.url_overridden_by_dest
         } else {
-            if (child.data.thumbnail != 'default') {
+            if (child.data.thumbnail !== 'default') {
                 img = child.data.thumbnail;
             };
         }
@@ -30,4 +30,20 @@ export const search = async (term) => {
         };
     });
     return newPosts;
+}
+
+export const getComments = async (permalink) => {
+    const response = await fetch(`${permalink}.json`);
+    const jsonResponse = await response.json();
+    const comments = await jsonResponse[1].data.children.map(child => {
+        return {
+            author: child.data.author,
+            body: child.data.body,
+            permalink: `${permalink}/${child.data.id}`,
+            ups: child.data.ups,
+            created: child.data.created_utc,
+            id: child.data.id
+        };
+    });
+    return comments;
 }

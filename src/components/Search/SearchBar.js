@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useState} from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchPosts } from '../../store/redditSlice';
 
 export const SearchBar = () => {
 
+    const dispatch = useDispatch();
     const [ localTerm, setLocalTerm ] = useState("");
 
     const handleClick = (e) => {
         e.preventDefault();
-        console.log(localTerm);
+        dispatch(fetchPosts(localTerm));
     }
 
     const handleChange = ({target}) => {
@@ -15,7 +18,7 @@ export const SearchBar = () => {
 
     const handleEnter = (e) => {
         if (e.keyCode === 13 ) {
-            console.log(localTerm);
+            dispatch(fetchPosts(localTerm));
         }
     }
 

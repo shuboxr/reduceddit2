@@ -1,7 +1,12 @@
+import { setFilter } from '../../store/redditSlice';
+import { useDispatch } from 'react-redux';
+
 export const SearchFilter = () => {
 
-    const handleChange = (e) => {
-        console.log(e.target.value);
+    const dispatch = useDispatch();
+
+    const handleChange = ({ target }) => {
+        dispatch(setFilter(target.value));
     }
 
     return (

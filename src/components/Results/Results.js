@@ -4,9 +4,12 @@ import { ShortPost } from './ShortPost';
 
 export const Results = () => {
     return (
-        <div className="posts">
+        <div className="results">
             {useSelector(state => {
-                return state.reddit.posts.map(post => {
+                const filteredPosts = state.reddit.posts.filter(post => {
+                    return post.ups > state.reddit.filter;
+                });
+                return filteredPosts.map(post => {
                     return <ShortPost post={post} key={post.id} />
                 })
             })}

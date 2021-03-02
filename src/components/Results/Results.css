@@ -1,0 +1,39 @@
+.results {
+    width: 95%;
+    height: 95%;
+    margin: 5px;
+    overflow-y: scroll;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    background-color: var(--color-background);
+}
+
+.short-line-one {
+    text-align: center;
+    text-overflow: ellipsis;
+}
+
+.short-line-one:hover {
+    cursor: pointer;
+}
+
+.short-line-two {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.short-post {
+    margin: 0 5px 5px 0;
+    background-color: var(--color-background-2);
+}
+
+.title {
+    font-size: 20px;
+}
+
+.ups {
+    padding: 0 4px;
+    outline: 1px solid black;
+    outline-offset: -2px;
+}

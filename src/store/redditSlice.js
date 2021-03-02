@@ -1,7 +1,4 @@
-import { createSlice, createSelector } from '@reduxjs/toolkit';
-
-const initialState = {
-    posts: [{
+/* {
         title: "Christmas is Funbecause I said so.because I said so.",
         author: "skwidward",
         selftext: "Christmas is fun because I said so.",
@@ -83,21 +80,110 @@ const initialState = {
                 id: "hleope",
                 permalink: "/"
             }]
-        }],
-    postClicked: true,
+        } */
+
+import { createSlice } from '@reduxjs/toolkit';
+import { getComments, search } from '../api/reddit';
+
+const initialState = {
+    posts: [],
+    activePostIndex: null,
     error: false,
     isLoading: false,
     searchTerm: '',
-    filter: null
+    filter: 0
 }
 
 const redditSlice = createSlice({
     name: 'redditPosts',
     initialState,
     reducers: {
-
+        startGetPosts (state, action) {
+            state.searchTerm = action.payload;
+            state.isLoading = true;
+            state.error = false;
+        },
+        getPostsSuccess (state, action) {
+            state.posts = action.payload;
+            state.isLoading = false;
+        },
+        getPostsFailure (state) {
+            state.isLoading = false;
+            state.error = true;
+        },
+        startGetComments (state, action) {
+            const postIndex = action.payload;
+            state.posts[postIndex].showingComments = !state.posts[postIndex].showingComments;
+            if (!state.posts[postIndex].showingComments) {
+                return;
+            }
+            state.posts[postIndex].loadingComments = true;
+            state.posts[postIndex].error = false;
+        },
+        getCommentsSuccess (state, action) {
+            const postIndex = action.payload.index;
+            state.posts[postIndex].comments = action.payload.comments;
+            state.posts[postIndex].loadingComments = false;
+            state.posts[postIndex].error = false;
+        },
+        getCommentsFailure (state, action) {
+            const postIndex = action.payload;
+            state.posts[postIndex].loadingComments = false;
+            state.posts[postIndex].error = true;
+        },
+        setSearchTerm (state, action) {
+            state.searchTerm = action.payload;
+        },
+        setFilter (state, action) {
+            state.filter = action.payload;
+        },
+        toggleActivePost (state, action) {
+            if (action) {
+                state.activePostIndex = action.payload;
+            } else {
+                state.activePostIndex = null;
+            }
+        },
+        toggleComments (state) {
+            if (!state.activePostIndex) {
+                return;
+            }
+            state.posts[state.activePostIndex].showingComments = !state.posts[state.activePostIndex].showingComments;
+        }
     }
-})
+});
 
+export const {
+    startGetPosts,
+    getPostsSuccess,
+    getPostsFailure,
+    startGetComments,
+    getCommentsSuccess,
+    getCommentsFailure,
+    setSearchTerm,
+    setFilter,
+    toggleActivePost,
+    toggleComments
+} = redditSlice.actions;
 
 export default redditSlice.reducer;
+
+export const fetchPosts = (term) => async (dispatch) => {
+    try {
+        dispatch(startGetPosts(term));
+        const posts = await search(term);
+        dispatch(getPostsSuccess(posts));
+    } catch (error) {
+        dispatch(getPostsFailure());
+    }  
+};
+
+export const fetchComments = (index, permalink) => async (dispatch) => {
+    try {
+        dispatch(startGetComments(index));
+        const comments = await getComments(permalink);
+        dispatch(getCommentsSuccess({ index, comments }));
+    } catch (error) {
+        dispatch(getCommentsFailure(index));
+    }
+};
