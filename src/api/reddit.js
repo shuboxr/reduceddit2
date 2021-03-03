@@ -1,6 +1,6 @@
 
 export const search = async (term) => {
-    const response = await fetch(term === '' ? 'http://www.reddit.com/r/popular.json' : `http://www.reddit.com/search.json?q=${term}`);
+    const response = await fetch(term === '' ? 'https://www.reddit.com/r/popular.json' : `https://www.reddit.com/search.json?q=${term}`);
     const jsonResponse = await response.json();
     const newPosts = await jsonResponse.data.children.map(child => {
         let img = '';
