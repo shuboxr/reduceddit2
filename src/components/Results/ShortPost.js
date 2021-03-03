@@ -9,10 +9,6 @@ export const ShortPost = (props) => {
     const reddit = useSelector((state) => state.reddit);
 
     const handleClick = () => {
-        reddit.posts.forEach((post) => {
-            console.log(post.id);
-        });
-        console.log(props.post.id);
         const index = reddit.posts.findIndex((post) => {
             return post.id === props.post.id;
         });

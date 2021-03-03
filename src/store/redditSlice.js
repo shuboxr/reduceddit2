@@ -113,6 +113,7 @@ const redditSlice = createSlice({
         },
         startGetComments (state, action) {
             const postIndex = action.payload;
+            console.log(postIndex);
             state.posts[postIndex].showingComments = !state.posts[postIndex].showingComments;
             if (!state.posts[postIndex].showingComments) {
                 return;
@@ -184,6 +185,7 @@ export const fetchComments = (index, permalink) => async (dispatch) => {
         const comments = await getComments(permalink);
         dispatch(getCommentsSuccess({ index, comments }));
     } catch (error) {
+        console.log(error);
         dispatch(getCommentsFailure(index));
     }
 };

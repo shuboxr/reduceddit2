@@ -32,7 +32,7 @@ export const FullPost = (props) => {
         const index = reddit.posts.findIndex((post) => {
                 return post.id === props.post.id;
             });
-        fetchComments(index, props.post.permalink);
+        dispatch(fetchComments(index, props.post.permalink));
     }
 
     const renderComments = () => {
