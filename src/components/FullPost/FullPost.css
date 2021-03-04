@@ -1,3 +1,7 @@
+.author-time {
+    text-align: right;
+}
+
 .comments {
     width: 90%;
 }
@@ -37,6 +41,8 @@
     align-items: center;
     border-bottom: 1px solid var(--color-border);
     background-color: var(--color-background);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .full-post button {

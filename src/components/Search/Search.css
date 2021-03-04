@@ -15,8 +15,8 @@
 
 .search-bar-input {
     padding: 10px 10px 10px 4px;
-    background-color: var(--color-background-empty);
-    border: 1px solid var(--color-background-empty);
+    background-color: var(--color-background-empty-light);
+    border: 1px solid var(--color-background-2);
     border-radius: var(--radius-button);
     color: var(--color-text-empty);
 }
@@ -30,9 +30,10 @@
 }
 
 .search-button {
+    color: var(--color-background-2);
     border: 1px solid var(--color-background-empty);
-    padding: 14px 10px 10px 10px;
-    background-color: var(--color-background-empty);
+    padding: 4px 7px 0 7px;
+    background-color: var(--color-border);
     border-radius: var(--radius-button);
 }
 
@@ -77,10 +78,10 @@
 
 #filter-select {
     width: 100%;
-    border: 1px solid var(--color-background-empty);
-    padding: 10px;
+    border: 1px solid var(--color-background-2);
+    padding: 10px 0 10px 10px;
     border-radius: var(--radius-button);
-    background-color: var(--color-background-empty);
+    background-color: var(--color-background-empty-light);
     color: var(--color-text-empty);
 }
 
