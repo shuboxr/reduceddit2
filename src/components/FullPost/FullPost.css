@@ -1,12 +1,74 @@
+.comments {
+    width: 90%;
+}
+
+.comments .short-post {
+    border: 2px solid var(--color-background);
+    background-color: var(--color-background);
+    margin: 0;
+}
+
+.comments .short-post .short-line-one {
+    background-color: var(--color-background-2);
+    padding: 5px;
+    border-radius: var(--radius-text);
+}
+
+.comments .short-post .short-line-two {
+    color: var(--color-text);
+    width: 80%;
+}
+
+.comment-body a {
+    color: var(--color-text);
+    font-size: 16px;
+}
+
+.comment-body a:hover {
+    color: black;
+}
+
 .full-post {
-    width: 100%;
+    width: 95%;
+    max-width: var(--width-max);
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-background);
+}
+
+.full-post button {
+    border: 2px solid var(--color-background);
+    background-color: var(--color-background);
+    color: var(--color-border);
+    font-weight: 700;
+    margin: 5px;
+    padding: 10px;
+    transition: .1s;
+}
+
+.full-post button:hover {
+    cursor: pointer;
+    background-color: var(--color-border);
+    color: var(--color-background-2);
+    border: 2px solid var(--color-background);
+}
+
+.full-post-header {
+    display: flex;
+    box-sizing: border-box;
+    border: 2px solid var(--color-border);
+    padding: 5px;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-background-2);
+    border-radius: var(--radius-text);
 }
 
 .full-post-info {
+    width: 100%;
     text-align: right;
 }
 
@@ -14,19 +76,37 @@
     text-align: center;
 }
 
+.full-post-title a {
+    color: var(--color-text);
+}
+
+.full-post-title a:hover {
+    color: black;
+}
+
+.info-line {
+    width: 100%;
+}
+
+.short-line-two {
+    font-size: 14px;
+}
+
 .thumbnail-container {
-    width: fit-content;
-    height: min-content;
+    width: 100%;
 }
 
 .thumbnail-image {
     width: 100%;
     max-width: 100%;
     height: 100%;
-    max-height: 33vh;
     object-fit: contain;
 }
 
 .ups {
     float: left;
+}
+
+
+@media only screen and (max-width: 600px) {
 }

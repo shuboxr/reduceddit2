@@ -1,26 +1,36 @@
 :root {
-  --color-background: black;
-  --color-background-2: lightsalmon;
-  --color-text: green;
-  --color-button-title: radial-gradient(white 40%, rgb(201, 201, 201));
-  --color-button-title-2: radial-gradient(rgb(201, 201, 201), black);
+  --color-background: whitesmoke;
+  --color-background-2: white;
+  --color-background-empty: rgb(253, 211, 147);
+  --color-background-empty-dark: rgb(223, 160, 67);
 
-  --height-app-header: 75px;
+  --color-border: rgb(71, 0, 71);
+  --color-border-light: rgb(114, 51, 114);
+
+  --color-empty-hover: lightgrey;
+  --color-text: rgb(46, 46, 46);
+  --color-text-empty: black;
+
+  --height-app-header: 100px;
 
   --margin-text: 5px;
 
   --padding-box: 5px;
   --padding-text: 7px;
 
-  --radius-text: 15px;
+  --radius-text: 10px;
+  --radius-button: 5px;
 
   --size-text-subtitle: 12px;
+
+  --width-max: 600px;
 }
 
 main {
   width: 100%;
-  height: calc(100% - var(--height-app-header));
-  min-height: 498px;
+  height: calc(95vh - var(--height-app-header));
+  background-color: var(--color-background);
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,8 +38,7 @@ main {
 }
 
 .app {
-  width: 90vw;
-  max-width: 600px;
+  width: 100%;
   height: 100vh;
   background-color: var(--color-background);
   color: var(--color-text);
@@ -37,11 +46,14 @@ main {
 
 .app-header {
   display: flex;
-  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
   justify-content: center;
   align-items: center;
   height: var(--height-app-header);
-  background-color: white;
+  background-color: var(--color-background-empty);
+  padding-bottom: 5px;
+  border-bottom: 2px solid var(--color-background-2);
 }
 
 .main-title {
@@ -49,31 +61,19 @@ main {
   height: min-content;
   margin-top: 5px;
   padding: 0 var(--padding-text) 2px var(--padding-text);
-  color: rgb(70, 120, 151);
-  background-color: whitesmoke;
-  background-image: var(--color-button-title);
+  color: var(--color-background-2);
+  background-color: var(--color-border);
   transition: .5s;
   font-weight: 900;
-  border-radius: var(--radius-text);
-  box-shadow: 1px 1px 3px black, -1px -1px 3px black, 1px -1px 3px black, -1px 1px 3px black;
+  /*
+  box-shadow: 1px 1px 3px var(--color-title-shadow), -1px -1px 3px var(--color-title-shadow), 1px -1px 3px var(--color-title-shadow), -1px 1px 3px var(--color-title-shadow);
+  */
 }
-
-/*@keyframes fade-to-black {
-  0% {
-    background-color: black;
-  }
-  30% {
-    background-color: whitesmoke;
-  }
-  100% {
-    background-color: black;
-  }
-}*/
 
 .main-title:hover {
   background-image: none;
-  background-color: black;
-  color: white;
+  background-color: var(--color-background-2);
+  color: var(--color-border);
   box-shadow: none;
   cursor: pointer;
 }
@@ -84,10 +84,44 @@ main {
   margin-top: 3px;
 }
 
+.titles-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #root {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  :root {
+    --width-max: 100%;
+    --height-app-header: 147px;
+  }
+
+  .app-header {
+    flex-direction: column;
+  }
+
+  .app-header * {
+    max-width: max-content;
+  }
+
+  .main-title {
+    height: min-content;
+  }
+
+  .subtitle {
+    display: none;
+  }
+
+  .titles-container {
+    width: 40%;
+  }
 }
 
 

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Search } from './components/Search/Search';
 import { Results } from './components/Results/Results';
 import { FullPost } from './components/FullPost/FullPost';
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleActivePost } from './store/redditSlice';
+import { toggleActivePost, fetchPosts } from './store/redditSlice';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -17,10 +18,13 @@ function App() {
       </main>
     ) : (
       <main>
-        <Search />
         <Results />
       </main>
     );
+
+    useEffect(() => {
+      dispatch(fetchPosts('popular'));
+     }, [dispatch]);
 
   const handleClick = () => {
     dispatch(toggleActivePost());
@@ -29,8 +33,11 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1 onClick={handleClick} className="main-title">reduceddit</h1>
-        <p className="subtitle">because you deserve less&trade;</p>
+        <div className="titles-container">
+          <h1 onClick={handleClick} className="main-title">reduceddit</h1>
+          <p className="subtitle">because you deserve less&trade;</p>
+        </div>
+        <Search />
       </header>
       {content}
     </div>

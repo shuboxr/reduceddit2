@@ -11,12 +11,12 @@ export const SearchFilter = () => {
 
     return (
         <div className="search-filter">
-                <label htmlFor="filter-select">Apply Filter:</label>
                 <select name="filter-select" id="filter-select" onChange={handleChange}>
-                    <option value={0}>no filter</option>
-                    <option value={1000}>1k+ ups</option>
-                    <option value={10000}>10k+ ups</option>
-                    <option value={20000}>20k+ ups</option>
+                    <option value="" disabled defaultValue>Filter Results</option>
+                    <option value={0}>Any Ups</option>
+                    <option value={1000}>1k+ Ups</option>
+                    <option value={10000}>10k+ Ups</option>
+                    <option value={20000}>20k+ Ups</option>
                 </select>
         </div>
     )

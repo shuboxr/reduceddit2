@@ -1,6 +1,7 @@
 import { useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchPosts } from '../../store/redditSlice';
+import { ImSearch } from 'react-icons/im';
 
 export const SearchBar = () => {
 
@@ -24,8 +25,8 @@ export const SearchBar = () => {
 
     return (
         <form className="search-bar">
-            <input placeholder="Enter search term" size={16} type="text" onChange={handleChange} onKeyPress={handleEnter} />
-            <button className="search-button" onClick={handleClick}>Search Reddit</button>
+            <button className="search-button" onClick={handleClick}><ImSearch /></button>
+            <input className="search-bar-input" placeholder="Enter search term" size={16} type="text" onChange={handleChange} onKeyPress={handleEnter} />
         </form>
     )
 }

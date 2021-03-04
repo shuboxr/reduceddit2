@@ -20,6 +20,7 @@ export const ShortPost = (props) => {
             <div className="short-line-one" onClick={handleClick}>
                 <span className="title">{props.post.title}</span>
             </div>
+            <hr className="short-divider" />
             <div className="short-line-two">
                 <span className="ups">&uarr;{props.post.ups < 10000 ? props.post.ups : (props.post.ups/1000).toFixed(1)+"K"}</span>
                 <span className="author-time">{ago} by <a target="_blank" rel="noreferrer" href={`http://www.reddit.com/u/${props.post.author}`}>{props.post.author}</a></span>

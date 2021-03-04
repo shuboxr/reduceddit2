@@ -87,7 +87,7 @@ import { getComments, search } from '../api/reddit';
 
 const initialState = {
     posts: [],
-    activePostIndex: null,
+    activePostIndex: 1,
     error: false,
     isLoading: false,
     searchTerm: '',
@@ -113,7 +113,6 @@ const redditSlice = createSlice({
         },
         startGetComments (state, action) {
             const postIndex = action.payload;
-            console.log(postIndex);
             state.posts[postIndex].showingComments = !state.posts[postIndex].showingComments;
             if (!state.posts[postIndex].showingComments) {
                 return;
@@ -170,6 +169,7 @@ export const {
 export default redditSlice.reducer;
 
 export const fetchPosts = (term) => async (dispatch) => {
+    dispatch(toggleActivePost());
     try {
         dispatch(startGetPosts(term));
         const posts = await search(term);

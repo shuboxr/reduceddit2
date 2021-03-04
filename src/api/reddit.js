@@ -15,7 +15,7 @@ export const search = async (term) => {
             title: child.data.title,
             author: child.data.author,
             selftext: child.data.selftext.replace(/&amp;#x200B;/g, ' '),
-            permalink: `https://reddit.com/r/${child.data.subreddit}/${child.data.id}`,
+            permalink: `https://www.reddit.com${child.data.permalink}`,
             thumbnail: img,
             ups: child.data.ups,
             subreddit: child.data.subreddit,
@@ -31,10 +31,11 @@ export const search = async (term) => {
 }
 
 export const getComments = async (permalink) => {
-    const response = await fetch(`${permalink}.json`);
-    console.log("RESPONSE: " + response.keys());
+
+    //visit https://cors-anywhere.herokuapp.com/corsdemo and enable demo CORS-proxy usage
+    /*
+    const response = await fetch(`https://cors-anywhere.herokuapp.com/${permalink}.json`);
     const jsonResponse = await response.json();
-    console.log("JSON: " + jsonResponse);
     const comments = await jsonResponse[1].data.children.map(child => {
         return {
             author: child.data.author,
@@ -45,5 +46,17 @@ export const getComments = async (permalink) => {
             id: child.data.id
         };
     });
-    return comments;
+    */
+    //comment out this dummy variable below \/ \/ \/
+    const comments = [{"author":"DefunctDoughnut","body":"Man, some people really are amazing. I would love to personally thank this one for giving such a wonderful gift.","permalink":"https://www.reddit.com/r/AskMen/comments/lv5fjo/contrary_to_popular_belief_about_guys_the_single/gpaa68f/","ups":1346,"created":1614785303,"id":"gpjj7z9"},
+        {"author":"DefunctDoughnut","body":"Man, some people really are amazing. I would love to personally thank this one for giving such a wonderful gift.","permalink":"https://www.reddit.com/r/AskMen/comments/lv5fjo/contrary_to_popular_belief_about_guys_the_single/gpaa68f/","ups":1346,"created":1614785303,"id":"gpjjqz9"},
+        {"author":"DefunctDoughnut","body":"Man, some people really are amazing. I would love to personally thank this one for giving such a wonderful gift.","permalink":"https://www.reddit.com/r/AskMen/comments/lv5fjo/contrary_to_popular_belief_about_guys_the_single/gpaa68f/","ups":1346,"created":1614785303,"id":"gpqj7z9"},
+        {"author":"DefunctDoughnut","body":"Man, some people really are amazing. I would love to personally thank this one for giving such a wonderful gift.","permalink":"https://www.reddit.com/r/AskMen/comments/lv5fjo/contrary_to_popular_belief_about_guys_the_single/gpaa68f/","ups":1346,"created":1614785303,"id":"gpjjez9"},
+        {"author":"DefunctDoughnut","body":"Man, some people really are amazing. I would love to personally thank this one for giving such a wonderful gift.","permalink":"https://www.reddit.com/r/AskMen/comments/lv5fjo/contrary_to_popular_belief_about_guys_the_single/gpaa68f/","ups":1346,"created":1614785303,"id":"gpjjaz9"},
+        {"author":"DefunctDoughnut","body":"Man, some people really are amazing. I would love to personally thank this one for giving such a wonderful gift.","permalink":"https://www.reddit.com/r/AskMen/comments/lv5fjo/contrary_to_popular_belief_about_guys_the_single/gpaa68f/","ups":1346,"created":1614785303,"id":"ggjj7z9"},
+        {"author":"DefunctDoughnut","body":"Man, some people really are amazing. I would love to personally thank this one for giving such a wonderful gift.","permalink":"https://www.reddit.com/r/AskMen/comments/lv5fjo/contrary_to_popular_belief_about_guys_the_single/gpaa68f/","ups":1346,"created":1614785303,"id":"gkjj7z9"},
+        {"author":"DefunctDoughnut","body":"Man, some people really are amazing. I would love to personally thank this one for giving such a wonderful gift.","permalink":"https://www.reddit.com/r/AskMen/comments/lv5fjo/contrary_to_popular_belief_about_guys_the_single/gpaa68f/","ups":1346,"created":1614785303,"id":"gljj7z9"},
+        {"author":"DefunctDoughnut","body":"Man, some people really are amazing. I would love to personally thank this one for giving such a wonderful gift.","permalink":"https://www.reddit.com/r/AskMen/comments/lv5fjo/contrary_to_popular_belief_about_guys_the_single/gpaa68f/","ups":1346,"created":1614785303,"id":"gbjj7z9"}]
+    //dummy variable /\ /\ /\
+        return comments;
 }

@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
+**<!>**
+Currently, fetching comments is blocked by CORS, and I don't know why. I've implemented a proxy which requires users to visit https://cors-anywhere.herokuapp.com/corsdemo and enable the demo before it will work. This functionality is also commented out in the getComments function in src/api/reddit.js around line 43, and I'm using dummy values instead.
+**<!>**
+
 ## Available Scripts
 
 In the project directory, you can run:

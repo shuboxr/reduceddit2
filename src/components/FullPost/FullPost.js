@@ -9,11 +9,13 @@ export const FullPost = (props) => {
     const ago = getTimeAgo(props.post.created);
     const dispatch = useDispatch();
     const reddit = useSelector((state) => state.reddit);
-
+    
     let img = '';
     if (props.post.thumbnail && props.post.thumbnail !== "self") {
         img = (<div className="thumbnail-container">
-                    <img alt="" className="thumbnail-image" src={props.post.thumbnail} />
+                    <a href={props.post.permalink} target="_blank" rel="noreferrer">
+                        <img alt="" className="thumbnail-image" src={props.post.thumbnail} />
+                    </a>
             </div>);
     }
 
@@ -38,55 +40,52 @@ export const FullPost = (props) => {
     const renderComments = () => {
         if (props.post.error) {
             return (
-                <div>
+                <div className="full-post">
                     <p>Error loading comments.</p>
-                    <button>Try Again?</button>
+                    <button onClick={handleCommentsClick}>Try Again?</button>
                 </div>
             )
         }
         if (props.post.loadingComments) {
             return (
-                <div>
-                    <p>Loading!</p>
-                    <p>loading.</p>
-                    <p>LOADING?</p>
+                <div className="results-loading">
+                    LOADING
                 </div>
             )
         }
         if (props.post.showingComments) {
             return (
-                <div className="full-post">
-                    <button onClick={handleCommentsClick}>Hide Comments</button>
+                <div className="comments">
                     {props.post.comments.map(comment => {
                         return <Comment className="comment" comment={comment} key={comment.id} />
                     })}
                 </div>
             )
         }
-        return (
-            <button onClick={handleCommentsClick}>Show Comments</button>
-        );
+        return '';
     }
 
     return (
         <div className="full-post">
-            <button onClick={handleActiveClick}>GO BACK! FOR THE LOVE OF GOD!</button>
+            <button onClick={handleActiveClick}>return to search</button>
             <div className="full-post-header">
                 <h2 className="full-post-title">
-                    {props.post.title}
+                    <a target="_blank" rel="noreferrer" href={props.post.permalink}>{props.post.title}</a>
                 </h2>
+                <hr className="short-divider" />
                 <div className="full-post-info">
                     <p className="info-line">
                         <span className="ups">&uarr;{props.post.ups}</span>
-                        <a alt="" href={props.post.permalink} >View on Reddit</a>
-                    </p>
-                    <p className="info-line">
                         {ago + " by "}<a target="_blank" rel="noreferrer" href={`http://reddit.com/u/${props.post.author}`}>{props.post.author}</a>{" "}
                     </p>
+                    <p className="info-line">
+                        <a alt="" href={props.post.permalink} >View on Reddit</a>
+                    </p>
                 </div>
-            </div>
             {img}
             {body}
+            </div>
+            <button onClick={handleCommentsClick}>{props.post.showingComments ? "hide " : "show "}comments</button>
             {renderComments()}
         </div>
     )

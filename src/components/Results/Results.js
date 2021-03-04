@@ -3,15 +3,20 @@ import { useSelector } from 'react-redux';
 import { ShortPost } from './ShortPost';
 
 export const Results = () => {
+
+    const reddit = useSelector(state => state.reddit);
+    if (reddit.isLoading) {
+        return <div className="results-loading">LOADING</div>;
+    }
+
+    const filteredPosts = reddit.posts.filter(post => {
+        return post.ups > reddit.filter;
+    });
+
     return (
         <div className="results">
-            {useSelector(state => {
-                const filteredPosts = state.reddit.posts.filter(post => {
-                    return post.ups > state.reddit.filter;
-                });
-                return filteredPosts.map(post => {
-                    return <ShortPost post={post} key={post.id} />
-                })
+            {filteredPosts.map(post => {
+                return <ShortPost post={post} key={post.id} />
             })}
         </div>
     )
