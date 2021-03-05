@@ -28,7 +28,7 @@ export const Search = () => {
                 <span className="search-info-number"> {totalResults} </span>
                 Total Results
                 {term === '' ? " from " : " for "}
-                <span className="search-term">{term === '' ? "r/popular" : term}</span> :
+                <span className="search-term">{term === '' ? "r/popular" : term}</span>:
             </div>
         </div>
     )

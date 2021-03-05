@@ -5,9 +5,21 @@ import { FullPost } from './components/FullPost/FullPost';
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleActivePost, fetchPosts } from './store/redditSlice';
-
+import $ from 'jquery';
 
 function App() {
+
+  const checkScrollBars = function(){
+    const b = $('body');
+    let normalw = 0;
+    let scrollw = 0;
+    if(b.prop('scrollHeight')>b.height()){
+        normalw = window.innerWidth;
+        scrollw = normalw - b.width();
+        $('#container').css({marginRight:'-'+scrollw+'px'});
+    }
+  }
+
   const dispatch = useDispatch();
   const reddit = useSelector((state) => state.reddit);
   const activePost = typeof reddit.activePostIndex === "number" ? reddit.posts[reddit.activePostIndex] : null;
@@ -23,7 +35,8 @@ function App() {
     );
 
     useEffect(() => {
-      dispatch(fetchPosts('popular'));
+      checkScrollBars();
+      dispatch(fetchPosts(''));
      }, [dispatch]);
 
   const handleClick = () => {

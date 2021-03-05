@@ -28,13 +28,10 @@
 
 main {
   width: 100%;
-  height: calc(95vh - var(--height-app-header));
+  height: fit-content;
   background-color: var(--color-background);
-  box-sizing: border-box;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 1;
+  justify-content: center;
 }
 
 .app {
@@ -46,7 +43,6 @@ main {
 
 .app-header {
   display: flex;
-  box-sizing: border-box;
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -95,6 +91,7 @@ main {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  height: 100vh;
 }
 
 @media only screen and (max-width: 600px) {
@@ -105,14 +102,18 @@ main {
 
   .app-header {
     flex-direction: column;
+    height: fit-content;
   }
 
   .app-header * {
     max-width: max-content;
+    overflow: hidden;
   }
 
   .main-title {
     height: min-content;
+    min-height: min-content;
+    padding-bottom: 5px;
   }
 
   .subtitle {
@@ -121,6 +122,8 @@ main {
 
   .titles-container {
     width: 40%;
+    min-width: min-content;
+    min-height: min-content;
   }
 }
 

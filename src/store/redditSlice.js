@@ -87,7 +87,7 @@ import { getComments, search } from '../api/reddit';
 
 const initialState = {
     posts: [],
-    activePostIndex: 1,
+    activePostIndex: null,
     error: false,
     isLoading: false,
     searchTerm: '',
