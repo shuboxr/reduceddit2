@@ -26,7 +26,7 @@ export const SearchBar = () => {
     return (
         <form className="search-bar">
             <button className="search-button" onClick={handleClick}><ImSearch /></button>
-            <input className="search-bar-input" placeholder="Enter search term" size={16} type="text" onChange={handleChange} onKeyPress={handleEnter} />
+            <input className="search-bar-input" placeholder="Search..." size={16} type="text" onChange={handleChange} onKeyPress={handleEnter} />
         </form>
     )
 }

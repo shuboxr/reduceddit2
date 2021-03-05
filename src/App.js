@@ -5,20 +5,8 @@ import { FullPost } from './components/FullPost/FullPost';
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleActivePost, fetchPosts } from './store/redditSlice';
-import $ from 'jquery';
 
 function App() {
-
-  const checkScrollBars = function(){
-    const b = $('#root');
-    let normalw = 0;
-    let scrollw = 0;
-    if(b.prop('scrollHeight')>b.height()){
-        normalw = window.innerWidth;
-        scrollw = 2 * (normalw - b.width());
-        $('body').css({marginRight:'-'+scrollw+'px'});
-    }
-  }
 
   const dispatch = useDispatch();
   const reddit = useSelector((state) => state.reddit);
@@ -36,7 +24,6 @@ function App() {
 
     useEffect(() => {
       dispatch(fetchPosts(''));
-      checkScrollBars();
      }, [dispatch]);
 
   const handleClick = () => {

@@ -11,8 +11,8 @@ export const SearchFilter = () => {
 
     return (
         <div className="search-filter">
-                <select name="filter-select" id="filter-select" onChange={handleChange}>
-                    <option value="" disabled selected>Add Filter</option>
+                <select name="filter-select" defaultValue="" id="filter-select" onChange={handleChange}>
+                    <option value="" disabled >Add Filter</option>
                     <option value={0}>Any Ups</option>
                     <option value={1000}>1k+ Ups</option>
                     <option value={10000}>10k+ Ups</option>

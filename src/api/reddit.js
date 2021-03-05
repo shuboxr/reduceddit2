@@ -1,4 +1,3 @@
-
 export const search = async (term) => {
     const response = await fetch(term === '' ? 'https://www.reddit.com/r/popular.json' : `https://www.reddit.com/search.json?q=${term}`);
     const jsonResponse = await response.json();
