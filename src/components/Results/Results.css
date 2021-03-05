@@ -76,6 +76,7 @@
     border: 2px solid var(--color-border);
     border-radius: var(--radius-text);
     transition: .2s;
+    margin: 2px 0 3px 0;
 }
 
 .short-post:hover {

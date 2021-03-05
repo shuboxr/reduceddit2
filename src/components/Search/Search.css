@@ -30,9 +30,12 @@
 }
 
 .search-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--color-background-2);
     border: 1px solid var(--color-background-empty);
-    padding: 4px 7px 0 7px;
+    min-width: 25px;
     background-color: var(--color-border);
     border-radius: var(--radius-button);
 }
@@ -58,7 +61,7 @@
 }
 
 .search-info {
-    padding: 5px;
+    margin-bottom: 5px;
     text-align: center;
 }
 

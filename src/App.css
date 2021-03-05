@@ -113,7 +113,6 @@ main {
   .main-title {
     height: min-content;
     min-height: min-content;
-    padding-bottom: 5px;
   }
 
   .subtitle {

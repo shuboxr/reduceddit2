@@ -35,8 +35,8 @@ function App() {
     );
 
     useEffect(() => {
-      checkScrollBars();
       dispatch(fetchPosts(''));
+      checkScrollBars();
      }, [dispatch]);
 
   const handleClick = () => {
