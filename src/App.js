@@ -10,13 +10,13 @@ import $ from 'jquery';
 function App() {
 
   const checkScrollBars = function(){
-    const b = $('body');
+    const b = $('#root');
     let normalw = 0;
     let scrollw = 0;
     if(b.prop('scrollHeight')>b.height()){
         normalw = window.innerWidth;
-        scrollw = normalw - b.width();
-        $('#container').css({marginRight:'-'+scrollw+'px'});
+        scrollw = 2 * (normalw - b.width());
+        $('body').css({marginRight:'-'+scrollw+'px'});
     }
   }
 
